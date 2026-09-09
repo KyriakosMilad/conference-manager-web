@@ -17,7 +17,7 @@ function githubPagesSpa() {
 }
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/conference-manager-web/' : '/',
+  base: '/',
   plugins: [react(), tailwindcss(), githubPagesSpa()],
   test: {
     environment: 'node',

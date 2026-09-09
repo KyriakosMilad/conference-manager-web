@@ -26,4 +26,4 @@ In the GitHub repo: **Settings → Pages → Build and deployment → Source: De
 
 Optionally set a repository variable `VITE_API_URL` (**Settings → Secrets and variables → Actions → Variables**) so CI builds against the public API.
 
-The site is at https://kyriakosmilad.github.io/conference-manager-web/
+The site is at https://conference-manager.kyri.me/
