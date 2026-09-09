@@ -25,10 +25,11 @@ import { StaffPage } from './pages/Staff'
 
 export default function App() {
   const [queryClient] = useState(() => new QueryClient())
+  const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <AuthProvider>
           <Routes>
             <Route element={<GuestRoute />}>
