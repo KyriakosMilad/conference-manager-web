@@ -14,12 +14,16 @@ npm run dev
 
 ## Deploy to GitHub Pages
 
-Set `VITE_API_URL` in `.env` to the public API, then:
+Set `VITE_API_URL` in `.env` to the public API, then either:
 
 ```bash
 npm run deploy
 ```
 
-That builds the app and publishes `dist` to the `gh-pages` branch. In the GitHub repo: **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `gh-pages` / root**.
+or push to `master` (GitHub Actions publishes the `gh-pages` branch).
+
+In the GitHub repo: **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `gh-pages` / root**.
+
+Optionally set a repository variable `VITE_API_URL` (**Settings → Secrets and variables → Actions → Variables**) so CI builds against the public API.
 
 The site is at https://kyriakosmilad.github.io/conference-manager-web/
