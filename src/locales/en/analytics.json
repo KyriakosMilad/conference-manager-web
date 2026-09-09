@@ -1,0 +1,16 @@
+{
+  "title": "Analytics",
+  "homeTitle": "Overview",
+  "pickConference": "Conference",
+  "allConferences": "All conferences",
+  "overall": "Overall",
+  "byDay": "By day",
+  "bySession": "By session",
+  "byContact": "By person",
+  "rate": "Attendance rate",
+  "attendance": "Attended",
+  "possible": "Possible",
+  "contacts": "People",
+  "sessions": "Sessions",
+  "empty": "No numbers yet"
+}

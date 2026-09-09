@@ -1,0 +1,11 @@
+{
+  "title": "Groups",
+  "add": "New group",
+  "edit": "Edit group",
+  "name": "Group name",
+  "color": "Color",
+  "badgeImageUrl": "Badge image URL",
+  "badgePreviewHint": "Name and check-in code are printed on this image",
+  "sampleContactName": "Sample attendee",
+  "empty": "No groups yet"
+}

@@ -1,0 +1,20 @@
+{
+  "title": "People",
+  "add": "New person",
+  "edit": "Edit person",
+  "name": "Name",
+  "city": "City",
+  "phone": "Phone",
+  "notes": "Notes",
+  "isMember": "Member",
+  "empty": "No people registered yet",
+  "qrTitle": "Check-in code",
+  "qrHint": "Scan this code to record attendance",
+  "attendance": "Attendance for this person",
+  "seq": "No.",
+  "group": "Group",
+  "noGroup": "No group",
+  "printAll": "Print all badges",
+  "printAllEmpty": "No people to print",
+  "printAllReady": "Printing {{count}} badges"
+}

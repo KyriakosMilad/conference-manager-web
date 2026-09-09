@@ -1,0 +1,14 @@
+{
+  "title": "Staff",
+  "add": "Add staff",
+  "edit": "Edit staff",
+  "name": "Name",
+  "email": "Email",
+  "password": "Password",
+  "role": "Role",
+  "admin": "Admin",
+  "moderator": "Moderator",
+  "active": "Active",
+  "empty": "You are the only staff member",
+  "passwordOptional": "Leave blank to keep the current password"
+}

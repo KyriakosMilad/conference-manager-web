@@ -1,0 +1,13 @@
+{
+  "title": "Conferences",
+  "add": "New conference",
+  "edit": "Edit conference",
+  "name": "Conference name",
+  "empty": "No conferences yet",
+  "overview": "Overview",
+  "sessions": "Sessions",
+  "groups": "Groups",
+  "contacts": "People",
+  "created": "Created {{date}}",
+  "open": "Open"
+}

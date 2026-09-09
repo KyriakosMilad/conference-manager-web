@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --color-brand: #2563eb;
+  --color-brand-hover: #1d4ed8;
+  --color-brand-soft: #eff6ff;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: #f8fafc;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0.6cm;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  .badge-print-sheet,
+  .badge-print-sheet * {
+    visibility: visible !important;
+  }
+
+  .badge-print-sheet {
+    position: static !important;
+    inset: auto !important;
+    left: auto !important;
+    top: auto !important;
+    z-index: auto !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-content: flex-start !important;
+    gap: 0.2cm !important;
+    width: 100% !important;
+    height: auto !important;
+    background: white !important;
+  }
+
+  .contact-badge {
+    width: 9cm !important;
+    height: 5.5cm !important;
+    max-width: 9cm !important;
+    flex-shrink: 0 !important;
+    overflow: hidden !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}

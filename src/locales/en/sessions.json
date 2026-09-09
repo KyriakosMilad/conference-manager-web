@@ -1,0 +1,8 @@
+{
+  "title": "Sessions",
+  "add": "New session",
+  "edit": "Edit session",
+  "name": "Session name",
+  "datetime": "Date and time",
+  "empty": "No sessions yet"
+}
