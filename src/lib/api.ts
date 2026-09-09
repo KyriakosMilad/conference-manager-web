@@ -28,7 +28,9 @@ export function setToken(token: string | null) {
 }
 
 function apiBase() {
-  return import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
+  const value = import.meta.env.VITE_API_URL
+  if (typeof value === 'string' && value.trim()) return value.trim().replace(/\/$/, '')
+  return 'http://localhost:8080'
 }
 
 type RequestOptions = {

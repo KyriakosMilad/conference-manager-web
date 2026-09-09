@@ -25,7 +25,7 @@ export function LoginPage() {
       const data = await resources.login({ email, password })
       await login(data.token, data.user)
     } catch (error) {
-      toast.error(error instanceof ApiError ? error.message : t('submitLogin'))
+      toast.error(error instanceof ApiError ? error.message : error instanceof Error ? error.message : t('submitLogin'))
     } finally {
       setSubmitting(false)
     }
