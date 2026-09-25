@@ -28,6 +28,8 @@ export function ContactsPage() {
   const conference = useOutletContext<Conference>()
   const queryClient = useQueryClient()
   const [page, setPage] = useState(1)
+  const [search, setSearch] = useState('')
+  const [nameQuery, setNameQuery] = useState('')
   const [open, setOpen] = useState(false)
   const [editing, setEditing] = useState<Contact | null>(null)
   const [name, setName] = useState('')
@@ -41,9 +43,17 @@ export function ContactsPage() {
   const [printing, setPrinting] = useState(false)
   const sheetRef = useRef<HTMLDivElement>(null)
 
+  useEffect(() => {
+    const handle = window.setTimeout(() => {
+      setNameQuery(search.trim())
+      setPage(1)
+    }, 300)
+    return () => window.clearTimeout(handle)
+  }, [search])
+
   const list = useQuery({
-    queryKey: ['contacts', id, page],
-    queryFn: () => resources.contacts(id, page),
+    queryKey: ['contacts', id, page, nameQuery],
+    queryFn: () => resources.contacts(id, page, undefined, nameQuery || undefined),
     enabled: Boolean(id),
   })
 
@@ -132,12 +142,21 @@ export function ContactsPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-end gap-2 print:hidden">
-        <Button variant="outline" onClick={() => void printAll()} disabled={printing}>
-          <Printer className="size-4" />
-          {t('printAll')}
-        </Button>
-        <Button onClick={openCreate}>{t('add')}</Button>
+      <div className="flex flex-col gap-3 print:hidden sm:flex-row sm:items-center sm:justify-between">
+        <Input
+          className="max-w-sm"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder={t('search')}
+          aria-label={t('search')}
+        />
+        <div className="flex justify-end gap-2">
+          <Button variant="outline" onClick={() => void printAll()} disabled={printing}>
+            <Printer className="size-4" />
+            {t('printAll')}
+          </Button>
+          <Button onClick={openCreate}>{t('add')}</Button>
+        </div>
       </div>
       <DataTable
         columns={[

@@ -3,6 +3,7 @@
   "add": "New person",
   "edit": "Edit person",
   "name": "Name",
+  "search": "Search by name",
   "city": "City",
   "phone": "Phone",
   "notes": "Notes",

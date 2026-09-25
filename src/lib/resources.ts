@@ -54,8 +54,10 @@ export const resources = {
     api<Group>(`/groups/${id}`, { method: 'PUT', body }),
   deleteGroup: (id: string) => api<unknown>(`/groups/${id}`, { method: 'DELETE' }),
   allGroups: (conferenceId: string) => allPages((page) => resources.groups(conferenceId, page, 100)),
-  contacts: (conferenceId: string, page = 1, pageSize?: number) =>
-    api<Paginated<Contact>>('/contacts', { query: { conference_id: conferenceId, page, page_size: pageSize } }),
+  contacts: (conferenceId: string, page = 1, pageSize?: number, name?: string) =>
+    api<Paginated<Contact>>('/contacts', {
+      query: { conference_id: conferenceId, page, page_size: pageSize, name },
+    }),
   allContacts: (conferenceId: string) => allPages((page) => resources.contacts(conferenceId, page, 100)),
   contact: (id: string) => api<Contact>(`/contacts/${id}`),
   createContact: (body: {
