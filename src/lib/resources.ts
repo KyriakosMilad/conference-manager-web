@@ -1,4 +1,5 @@
 import { api } from './api'
+import type { AttendanceSheet } from './exportAttendance'
 import type {
   AnalyticsData,
   Attendance,
@@ -35,6 +36,7 @@ export const resources = {
   //   api<AuthData>('/auth/register', { method: 'POST', body }),
   conferences: (page = 1) => api<Paginated<Conference>>('/conferences', { query: { page } }),
   conference: (id: string) => api<Conference>(`/conferences/${id}`),
+  conferenceAttendance: (id: string) => api<AttendanceSheet>(`/conferences/${id}/attendance`),
   createConference: (body: { name: string }) => api<Conference>('/conferences', { method: 'POST', body }),
   updateConference: (id: string, body: { name: string }) =>
     api<Conference>(`/conferences/${id}`, { method: 'PUT', body }),

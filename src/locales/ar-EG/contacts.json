@@ -15,6 +15,9 @@
   "seq": "رقم",
   "group": "المجموعة",
   "noGroup": "من غير مجموعة",
+  "exportAll": "تصدير الحضور",
+  "exportAllEmpty": "مفيش ناس للتصدير",
+  "exportAllReady": "اتحمّل حضور {{count}} شخص",
   "printAll": "طباعة كل الشارات",
   "printAllEmpty": "مفيش ناس للطباعة",
   "printAllReady": "بيطبع {{count}} شارة"

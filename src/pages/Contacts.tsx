@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { Printer } from 'lucide-react'
+import { Download, Printer } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useOutletContext, useParams } from 'react-router-dom'
@@ -18,6 +18,7 @@ import { Input } from '@/components/ui/input'
 import { Select } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { ApiError } from '@/lib/api'
+import { downloadAttendanceCsv } from '@/lib/exportAttendance'
 import { resources } from '@/lib/resources'
 import type { Conference, Contact } from '@/lib/types'
 
@@ -41,6 +42,7 @@ export function ContactsPage() {
   const [deleting, setDeleting] = useState<Contact | null>(null)
   const [printRows, setPrintRows] = useState<{ contact: Contact; badgeImageUrl?: string }[] | null>(null)
   const [printing, setPrinting] = useState(false)
+  const [exporting, setExporting] = useState(false)
   const sheetRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -133,6 +135,23 @@ export function ContactsPage() {
     }
   }
 
+  async function exportAll() {
+    setExporting(true)
+    try {
+      const data = await resources.conferenceAttendance(id)
+      if (!data.rows.length) {
+        toast.error(t('exportAllEmpty'))
+        return
+      }
+      downloadAttendanceCsv(data)
+      toast.success(t('exportAllReady', { count: data.rows.length }))
+    } catch (error) {
+      toast.error(error instanceof ApiError ? error.message : tc('error'))
+    } finally {
+      setExporting(false)
+    }
+  }
+
   useEffect(() => {
     if (!printing || !printRows || !sheetRef.current) return
     void printBadgeSheet(sheetRef.current, conference?.name ? `${conference.name} badges` : 'badges').finally(() => {
@@ -150,7 +169,11 @@ export function ContactsPage() {
           placeholder={t('search')}
           aria-label={t('search')}
         />
-        <div className="flex justify-end gap-2">
+        <div className="flex flex-wrap justify-end gap-2">
+          <Button variant="outline" onClick={() => void exportAll()} disabled={exporting}>
+            <Download className="size-4" />
+            {t('exportAll')}
+          </Button>
           <Button variant="outline" onClick={() => void printAll()} disabled={printing}>
             <Printer className="size-4" />
             {t('printAll')}

@@ -15,6 +15,9 @@
   "seq": "No.",
   "group": "Group",
   "noGroup": "No group",
+  "exportAll": "Export attendance",
+  "exportAllEmpty": "No people to export",
+  "exportAllReady": "Downloaded attendance for {{count}} people",
   "printAll": "Print all badges",
   "printAllEmpty": "No people to print",
   "printAllReady": "Printing {{count}} badges"
